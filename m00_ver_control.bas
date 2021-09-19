@@ -77,6 +77,32 @@ On Error Resume Next
 
 End Sub
 
+Sub zakladam_repo_w_podanej_lokalizacji()
+    
+    Dim sciezka
+    sciezka = "C:\Users\Dabek\Desktop\eksporcik\modules\"
+    
+    Dim FileContents1 As String
+    Dim strFile1 As String
+
+    strFile1 = sciezka & "gitCommands.sh"
+
+On Error Resume Next
+Kill strFile1
+On Error GoTo 0
+
+    FileContents1 = "#! /bin/bash" & vbNewLine _
+    & "cd '" & sciezka & "'" & vbNewLine _
+    & "git init"
+    
+Open strFile1 For Binary As #1
+    Put #1, , FileContents1
+Close #1
+
+gitFileCommands = Replace(sciezka & "\gitCommands.sh", "\", "/")
+Shell "C:\Program Files\Git\bin\sh.exe """ & gitFileCommands & """"
+     
+End Sub
 
 Sub aktualizuj_gita(sciezka)
 
