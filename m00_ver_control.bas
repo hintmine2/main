@@ -155,6 +155,9 @@ End Sub
 
 Sub zrob_pusha()
     'zeby bylo widac repo na githbie
+    'login mich2@hintmine.com
+    'user hintmine2
+    'pass Vba12345!
     
     Dim sciezka
     sciezka = "C:\Users\Dabek\Desktop\eksporcik\modules\"
@@ -170,6 +173,8 @@ On Error GoTo 0
 
     FileContents1 = "#! /bin/bash" & vbNewLine _
     & "cd '" & sciezka & "'" & vbNewLine _
+    & "git remote add origin https://github.com/hintmine2/main.git" & vbNewLine _
+    & "git branch -M main" & vbNewLine _
     & "git push -u origin main"
     
 Open strFile1 For Binary As #1
