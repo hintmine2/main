@@ -124,6 +124,12 @@ Close #1
 
 End Sub
 
+Sub zrob_pusha()
+    'zeby bylo widac repo na githbie
+     Shell "git push -u origin main"
+     
+End Sub
+
 Function czy_jest_dostep_do_modelu_obiekt_VBA() As Boolean
     Dim wsh
     Dim klucz As String
