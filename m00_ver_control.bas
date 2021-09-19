@@ -74,7 +74,6 @@ On Error Resume Next
                 komponent_kodu.Export do_eksportu & ".frm"
         End Select
     Next
-'test
 
 End Sub
 
