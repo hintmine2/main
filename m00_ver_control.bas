@@ -77,6 +77,29 @@ On Error Resume Next
 
 End Sub
 
+
+Sub aktualizuj_gita(sciezka)
+
+Dim FileContents1 As String
+Dim strFile1 As String
+
+strFile1 = sciezka & "gitCommands.sh"
+
+On Error Resume Next
+Kill strFile1
+On Error GoTo 0
+
+FileContents1 = "#! /bin/bash" & vbNewLine _
+    & "cd '" & sciezka & "'" & vbNewLine _
+    & "git add *.bas"
+
+Open strFile1 For Binary As #1
+    Put #1, , FileContents1
+Close #1
+
+End Sub
+
+
 Sub zrob_commita()
     Dim sciezka
     sciezka = "C:\Users\Dabek\Desktop\eksporcik\modules\"
@@ -103,30 +126,32 @@ Shell "C:\Program Files\Git\bin\sh.exe """ & gitFileCommands & """"
 
 End Sub
 
-Sub aktualizuj_gita(sciezka)
 
-Dim FileContents1 As String
-Dim strFile1 As String
+Sub zrob_pusha()
+    'zeby bylo widac repo na githbie
+    
+    Dim sciezka
+    sciezka = "C:\Users\Dabek\Desktop\eksporcik\modules\"
+    
+    Dim FileContents1 As String
+    Dim strFile1 As String
 
-strFile1 = sciezka & "gitCommands.sh"
+    strFile1 = sciezka & "gitCommands.sh"
 
 On Error Resume Next
 Kill strFile1
 On Error GoTo 0
 
-FileContents1 = "#! /bin/bash" & vbNewLine _
+    FileContents1 = "#! /bin/bash" & vbNewLine _
     & "cd '" & sciezka & "'" & vbNewLine _
-    & "git add *.bas"
-
+    & "git push -u origin main"
+    
 Open strFile1 For Binary As #1
     Put #1, , FileContents1
 Close #1
 
-End Sub
-
-Sub zrob_pusha()
-    'zeby bylo widac repo na githbie
-     Shell "git push -u origin main"
+gitFileCommands = Replace(sciezka & "\gitCommands.sh", "\", "/")
+Shell "C:\Program Files\Git\bin\sh.exe """ & gitFileCommands & """"
      
 End Sub
 
