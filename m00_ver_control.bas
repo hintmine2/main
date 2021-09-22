@@ -26,9 +26,9 @@ Sub eksportuj_caly_kod_z_pliku()
     End If
     
 'sprawdzam czy Uzytkownik ma otwarte okno z edytorem VBA
-    If (ThisWorkbook.VBProject.VBE.ActiveWindow Is Nothing) Then
-        Exit Sub
-    End If
+    '    If (ThisWorkbook.VBProject.VBE.ActiveWindow Is Nothing) Then
+    '        Exit Sub
+    '    End If
     
 'wyciagnij sciezke do eksportowania ze sciezki do pliku
     Dim sciezka_eksport As String
@@ -151,7 +151,6 @@ gitFileCommands = Replace(sciezka & "\gitCommands.sh", "\", "/")
 Shell "C:\Program Files\Git\bin\sh.exe """ & gitFileCommands & """"
 
 End Sub
-
 
 Sub zrob_pusha()
     'zeby bylo widac repo na githbie
